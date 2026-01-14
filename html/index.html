@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Share Your Stories</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Authentication Page -->
+    <div id="authPage" class="auth-container">
+        <h2 id="authTitle">Welcome to BlogHub</h2>
+        <p id="authSubtitle">Sign in to continue</p>
+        
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+        
+        <form id="authForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required minlength="6">
+            </div>
+            <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;" id="authButton">Sign In</button>
+        </form>
+        
+        <div class="auth-switch">
+            <span id="authSwitchText">Don't have an account?</span>
+            <a id="authSwitchLink">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1>📝 BlogHub</h1>
+                <div class="header-actions">
+                    <span class="user-email" id="userEmail"></span>
+                    <button class="btn btn-primary" id="createBlogBtn">+ Create Blog</button>
+                    <button class="btn btn-danger" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="filters">
+                <label for="categoryFilter">📂 Filter by Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Technology">💻 Technology</option>
+                    <option value="Lifestyle">🌟 Lifestyle</option>
+                    <option value="Travel">✈️ Travel</option>
+                    <option value="Food">🍔 Food</option>
+                    <option value="Business">💼 Business</option>
+                    <option value="Health">💪 Health</option>
+                    <option value="Education">📚 Education</option>
+                    <option value="Entertainment">🎬 Entertainment</option>
+                    <option value="Other">📌 Other</option>
+                </select>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blogGrid" class="blog-grid"></div>
+            <div id="loadingMessage" class="loading">Loading blogs...</div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Create New Blog</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="blogForm">
+                <div class="form-group">
+                    <label for="blogTitle">Blog Title *</label>
+                    <input type="text" id="blogTitle" placeholder="Enter an engaging title" required>
+                </div>
+                <div class="form-group">
+                    <label for="blogCategory">Category *</label>
+                    <select id="blogCategory" required>
+                        <option value="Technology">💻 Technology</option>
+                        <option value="Lifestyle">🌟 Lifestyle</option>
+                        <option value="Travel">✈️ Travel</option>
+                        <option value="Food">🍔 Food</option>
+                        <option value="Business">💼 Business</option>
+                        <option value="Health">💪 Health</option>
+                        <option value="Education">📚 Education</option>
+                        <option value="Entertainment">🎬 Entertainment</option>
+                        <option value="Other">📌 Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="blogDescription">Content *</label>
+                    <textarea id="blogDescription" rows="8" placeholder="Share your thoughts..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="blogImage">Blog Image (Optional)</label>
+                    <input type="file" id="blogImage" accept="image/*">
+                    <img id="imagePreview" class="image-preview hidden" alt="Preview">
+                </div>
+                <button type="submit" class="btn btn-success" style="width: 100%;" id="submitBlogBtn">
+                    🚀 Publish Blog
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../index.js"></script>
+</body>
+</html>
